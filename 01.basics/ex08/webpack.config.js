@@ -1,8 +1,12 @@
 const path = require('path');
 
-module.exports = {
+module.exports = (env) => {
+
+    const entry = path.resolve(`src/${env.src}/index`)
+    
+    return {
     mode: 'development',
-    entry: path.resolve('src/${env.src}/index'), // 실행방법 npm start src=01 // 실행 방법 npm run debug src=01
+    entry: entry, // 실행방법 npm start src=01 // 실행 방법 npm run debug src=01
     output: {
         path: path.resolve('public'),
         filename: 'bundle.js',
@@ -31,4 +35,5 @@ module.exports = {
         compress: true,
         historyApiFallback: true
     }
+};
 }
