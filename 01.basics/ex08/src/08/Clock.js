@@ -37,7 +37,8 @@ export default function() {
             {('0' + (hours > 12 ? hours - 12 : hours)).slice(-2)}
             {' : '}
 
-            {/* comment04: 이런 방식으로 표현식이 실행되는 블록안에서 주석을 달아야 한다.: 추천 */}
+            {/* comment04: 이런 방식으로 표현식이 실행되는 블록안에서 주석을 달아야 한다.: 추천ㅛ
+             */}
 
             {('0' + minutes).slice(-2)}
             {' : '} 
