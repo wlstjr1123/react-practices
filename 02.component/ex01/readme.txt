@@ -1,6 +1,12 @@
 ex01: Property
 
 01. props(Property)
+  1) 컴포넌트의 데이터
+  2) 부모 컴포넌트에서 자식으로 전달된다.
+    - Component Communication(컴포넌트간의 통신), Data Flow
+    - Top -> down
+  3) 자식 컴포넌트에서는 변경 불가
+
 02. FoodList src/01 : 클래스 컴포넌트
 03. FoodList src/02 : Data Flow(top->down) : 클래스 컴포넌트
 04. FoodList src/03 : Data Flow(top->down) : 함수 컴포넌트
@@ -13,7 +19,7 @@ ex01: Property
 
 설치: 
 $ npm i -D webpack webpack-cli webpack-dev-server babel-loader style-loader css-loader sass-loader node-sass @babel/core @babel/cli @babel/preset-env @babel/preset-react
-$ npm i react react-dom
+$ npm i react react-dom prop-types
 
 설정:
 babel: babel.config.json
