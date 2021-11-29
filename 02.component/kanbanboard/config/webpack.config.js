@@ -16,7 +16,10 @@ module.exports = (env) => {
         rules: [{
             test: /\.js$/i,
             exclude: /node_modules/,
-            use:['babel-loader'] // 사용 해야할 로더
+            loader: 'babel-loader', // 사용 해야할 로더
+            options: {
+                configFile: path.resolve('config/babel.config.json')
+            }
         }, {
             test: /\.(sa|sc|c)ss$/i,
             use:['style-loader', 'css-loader', 'sass-loader'] // 사용 해야할 로더

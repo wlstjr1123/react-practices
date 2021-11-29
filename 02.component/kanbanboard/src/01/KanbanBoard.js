@@ -1,6 +1,7 @@
 import React from 'react';
-import cards from './data.json';
-import './assets/styles.css'
+import CardList from './CardList'
+import cards from './assets/json/data.json';
+import './assets/css/styles.css'
 
 export default function() {
     // console.log(cards);
@@ -9,9 +10,9 @@ export default function() {
     // console.log(a);
     return (
         <div className='KanbanBoard'>
-            {/* <CardList key='ToDo' title={'ToDo'} cards={ cards.filter((card) => card.status === 'ToDo') }/>
+            <CardList key='ToDo' title={'ToDo'} cards={ cards.filter((card) => card.status === 'ToDo') }/>
             <CardList key='Doing' title={'Doing'} cards={ cards.filter((card) => card.status === 'Doing') }/>
-            <CardList key='Done' title={'Done'} cards={ cards.filter((card) => card.status === 'Done')}/> */}
+            <CardList key='Done' title={'Done'} cards={ cards.filter((card) => card.status === 'Done')}/>
         </div>
     )
 }
