@@ -22,7 +22,11 @@ module.exports = (env) => {
             }
         }, {
             test: /\.(sa|sc|c)ss$/i,
-            use:['style-loader', 'css-loader', 'sass-loader'] // 사용 해야할 로더
+            use:[
+                'style-loader',
+                { loader: 'css-loader', options: { modules: env['css-modules'] !== 'false'} }, 
+                'sass-loader'
+            ] // 사용 해야할 로더
         }, {
             test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,
             type: 'asset/resource'
