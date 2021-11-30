@@ -1,10 +1,16 @@
 import React from 'react';
-
+import styles from './assets/css/styles.css'
+import Form from './form';
+import Guestbook__List from './GuestbookList';
 
 export default function() {
     return (
-      <div id='App'>
-          <h1>GuestBook</h1>
-      </div>
+      <div className={styles.Guestbook}>
+            <h1>방명록</h1>
+
+            <Form/>
+            <Guestbook__List/>
+
+        </div>
     )
 }
