@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function TitelBar02() {
-    const onCLickHandler = () => {
+    const onCLickHandler = (e) => {
         
         console.log("TitileBar01 clicked");
     }
