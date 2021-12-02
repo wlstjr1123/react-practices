@@ -38,7 +38,15 @@
     &:before {
         content:'x'
     }
-    &.a:hover, &a:visited, &a:active {
+    &.a:hover {
+        text-decoration: none;
+        color: #fff;
+    } 
+    &a:visited{
+        text-decoration: none;
+        color: #fff;
+    } 
+    &a:active {
         text-decoration: none;
         color: #fff;
     }
