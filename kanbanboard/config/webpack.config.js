@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = (env) => {
 
-    const entry = path.resolve(`src/${env.src}/index`)
+    const entry = path.resolve(`src/index`)
     
     return {
     mode: 'development',
