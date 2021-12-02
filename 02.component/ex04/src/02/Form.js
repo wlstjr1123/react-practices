@@ -65,8 +65,8 @@ export default function Form() {
 
             <fieldset>
                 <legend>성별</legend>
-                <label>여</label> <input type="radio" name="gender" value={ "female" } onChange={onChangeInputGender} checked={gender === 'female'} defaultChecked={ true } />
-                <label>남</label> <input type="radio" name="gender" value={ "male" } onChange={onChangeInputGender} checked={gender == 'male'} defaultChecked={ false } />
+                <label>여</label> <input type="radio" name="gender" value={ "female" } onChange={onChangeInputGender} checked={gender === 'female'} />
+                <label>남</label> <input type="radio" name="gender" value={ "male" } onChange={onChangeInputGender} checked={gender == 'male'}  />
             </fieldset>
 
             <label htmlFor="birthYear">생년</label>
