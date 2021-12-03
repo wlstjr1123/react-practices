@@ -1,46 +1,43 @@
 const path = require('path');
 
-module.exports = (env) => {
-
-    const entry = path.resolve(`src/index.js`)
-    
-    return {
-    mode: 'development',
-    entry: entry, // 실행방법 npm start src=01 // 실행 방법 npm run debug src=01
+module.exports = (env) => ({
+    mode: "none",
+    entry: path.resolve(`src/index.js`),
     output: {
         path: path.resolve('public'),
-        filename: 'bundle.js',
-        assetModuleFilename: 'assets/images/[hash][ext]'
+        filename: 'js/main.js',
+        assetModuleFilename: 'images/[hash][ext]'
     },
-    module : {
+    module: {
         rules: [{
-            test: /\.js$/i,
+            test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,
+            type: 'asset/resource'
+        }, {
+            test: /\.(sa|sc|c)ss$/i,
+            use: [
+                'style-loader',
+                {loader: 'css-loader', options: {modules: true}},
+                'sass-loader'
+            ]
+        }, {
+            test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel-loader', // 사용 해야할 로더
+            loader: 'babel-loader',
             options: {
                 configFile: path.resolve('config/babel.config.json')
             }
-        }, {
-            test: /\.(sa|sc|c)ss$/i,
-            use:[
-                'style-loader',
-                { loader: 'css-loader', options: { modules: true} }, 
-                'sass-loader'
-            ] // 사용 해야할 로더
-        }, {
-            test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,
-            type: 'asset/resource'
         }]
     },
     devtool: "eval-source-map",
     devServer: {
-        host: '0.0.0.0',
+        contentBase: path.resolve('public'),
+        watchContentBase: true,
+        host: "0.0.0.0",
         port: 9999,
-        // inline: true,
+        inline: true,
         liveReload: true,
         hot: false,
         compress: true,
         historyApiFallback: true
     }
-};
-}
+});
