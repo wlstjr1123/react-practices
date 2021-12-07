@@ -63,23 +63,37 @@
    1. simple request
       <pre>
          JS             browser           server
-           --------->
-             fetch()
-      <pre>
-
-   2. orefilight request
-      <pre>
-         JS             browser           server
-           --------->           -------->
-             fetch()             options
-                                <--------
-                                  200 ok
-                                  Access-Control-Allow-origin:*
-                                --------->
+           --------->          --------->
                                   GET /api
                                 <---------
                                   200 ok
                                   Access-Control-Allow-origin:*
+                                  ==========================
+                                  "{...............}
+             fetch()
+      <pre>
+
+      조건:
+      1) GET, HEAD, POST 중의 하나의 method를 쓰는 경우
+      2) Accept, Accept-Language, Content-Type 등의 헤더만 사용하는 경우
+      3) Content-Type 헤더에 application/x-www-form-urlencoded, multipart/for-data, text/palin인 경우
+
+   2. preflight request
+      <pre>
+         JS             browser           server
+           --------->           -------->
+             fetch()             options
+                                 Access-Control-Request-Method: put || delete ...
+                                <--------
+                                  200 ok
+                                  Access-Control-Allow-Origin:*
+                                --------->
+                                  GET /api
+
+                                <---------
+                                  200 ok
+                                  Access-Control-Allow-Origin:*
+                                  cookies: .....
                                   ==========================
                                   "{...............}
    respons <---------
