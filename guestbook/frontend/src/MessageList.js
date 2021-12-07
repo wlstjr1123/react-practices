@@ -23,30 +23,35 @@ export default function MessageList({messages, notifyMessage}) {
                 return;
             }
 
-            // const response = await fetch(`/api/${modalData.messageNo}`, {
-            //     method: 'delete',
-            //     header: {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     body: JSON.stringify({password: modalData.password})
-            // });
 
-            // if(!response.ok) {
-            //     throw  `${response.status} ${response.statusText}`;
-            // }
+            const response = await fetch(`/api/${modalData.messageNo}`, {
+                method: 'delete',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({password: modalData.password})
+            });
 
-            // const jsonResult = response.json;
+            if(!response.ok) {
+                throw  `${response.status} ${response.statusText}`;
+            }
 
+            const jsonResult = await response.json();
+
+            if (jsonResult.data === null) {
+                setModalData(Object.assign({}, modalData, {label:'비밀번호가 일치하지 않습니다.', password: ''}));
+                return;
+            }
 
             // 비밀번호가 틀린 경우
             // jsonResult.data가  null
-            setModalData(Object.assign({}, modalData, {label:'비밀번호가 일치하지 않습니다.', password: ''}));
+            
 
             // 잘 삭제가 된 경우
             // jsonResult.data가 10
-            // setModalData({isOpen: false, password:''});
-            // notifyMessage.delete(modalData.messageNo);
+            setModalData({isOpen: false, password:''});
+            notifyMessage.delete(parseInt(jsonResult.data));
         } catch (err) {
             console.error(err);
         }
