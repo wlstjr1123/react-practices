@@ -1,6 +1,6 @@
 ## React Pracractices - Integration(개발 환경 통합)
 
-## Configuration
+#### Configuration
 1. Application(Project) Structure
    <pre>
    /app
@@ -39,9 +39,48 @@
 5. concurrently
 6. node application
 
-emaillist
+#### emaillist
     - 개발 통합 설정(with Node Backend)
     - backend: Fully APIs(Node Exporess기반)
     - Frontend: React(SPA)
     - AJAX: fetch 기반
     
+#### cors란?
+1. origin
+   URL에서 protocol + host + port를 합친 것
+   ```
+   > location.origin
+   < 'http://localhost:9999'
+   ```
+
+2. 같은 origin vs 다른 origin
+3. Sane Origin Policy
+   브라우저가 동일 출처 정책(SOP)를 지켜서 다른 출처의 리소스 접근을 금지 (브라우저가 판단)
+      - 외부 리소스를 못 가져오는 단점
+      - XSS 등과 같은 보안 취약점을 사전에 방지할 수 있다.
+
+4.
+   1. simple request
+      <pre>
+         JS             browser           server
+           --------->
+             fetch()
+      <pre>
+
+   2. orefilight request
+      <pre>
+         JS             browser           server
+           --------->           -------->
+             fetch()             options
+                                <--------
+                                  200 ok
+                                  Access-Control-Allow-origin:*
+                                --------->
+                                  GET /api
+                                <---------
+                                  200 ok
+                                  Access-Control-Allow-origin:*
+                                  ==========================
+                                  "{...............}
+   respons <---------
+      <pre>

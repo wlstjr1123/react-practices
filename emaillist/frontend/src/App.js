@@ -17,12 +17,17 @@ export default function() {
 
     useEffect(async () => {
       try {
-        const response = await fetch('/api', {
+        const response = await fetch('http://localhost:8080/api', {
           method: 'get',
+          mode: 'cors',                     // no-cors, cors, same-origin*
+          crednetials: 'same-origin',             // include, omit, same-origin*
+          cache: 'no-cache',                      // no-cache, reload, force-cache, default*
           header: {
-            "Content-Type": 'application/json',
-            'Accept': 'application'
+            "Content-Type": 'application/json',   // cf. application/x-www-form-urlencoded
+            'Accept': 'application/json'          // cf. text/html
           },
+          redirect: 'follow',                     // follow*, error, manual(response.url)
+          referrer: 'client',                     // no-referrer, *client
           body: null
         });
 
