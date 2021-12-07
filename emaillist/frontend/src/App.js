@@ -17,7 +17,7 @@ export default function() {
 
     useEffect(async () => {
       try {
-        const response = await fetch('api', {
+        const response = await fetch('/api', {
           method: 'get',
           mode: 'cors',                     // no-cors, cors, same-origin*
           crednetials: 'include',             // include, omit, same-origin*
